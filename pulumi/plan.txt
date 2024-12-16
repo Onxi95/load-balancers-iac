@@ -1,0 +1,17 @@
+     Type                              Name                       Plan       
+ +   pulumi:pulumi:Stack               iac-bachelor-iac-bachelor  create     
+ +   ├─ aws:ec2:Vpc                    vpc                        create     
+ +   ├─ aws:lb:TargetGroup             lb_target_group            create     
+ +   ├─ aws:ec2:Subnet                 a                          create     
+ +   ├─ aws:ec2:Subnet                 b                          create     
+ +   ├─ aws:ec2:InternetGateway        gateway                    create     
+ +   ├─ aws:ec2:SecurityGroup          secGroup                   create     
+ +   ├─ aws:ec2:RouteTable             routeTable                 create     
+ +   ├─ aws:ec2:RouteTableAssociation  routeTableAssociation-0    create     
+ +   ├─ aws:lb:LoadBalancer            load_balancer              create     
+ +   ├─ aws:ec2:Instance               b                          create     
+ +   ├─ aws:ec2:RouteTableAssociation  routeTableAssociation-1    create     
+ +   ├─ aws:ec2:Instance               a                          create     
+ +   ├─ aws:lb:TargetGroupAttachment   attachment-1               create     
+ +   ├─ aws:lb:Listener                lb_listener                create     
+ +   └─ aws:lb:TargetGroupAttachment   attachment-0               create   

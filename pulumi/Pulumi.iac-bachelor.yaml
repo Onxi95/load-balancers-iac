@@ -1,0 +1,4 @@
+config:
+  aws:region: us-east-1
+  iac-bachelor:instanceType: t2.micro
+  iac-bachelor:vpcNetworkCidr: 10.0.0.0/16

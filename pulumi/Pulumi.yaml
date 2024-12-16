@@ -1,0 +1,10 @@
+name: iac-bachelor
+runtime:
+  name: nodejs
+  options:
+    packagemanager: npm
+description: IaC bachelor project demo
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: vm-aws-typescript
