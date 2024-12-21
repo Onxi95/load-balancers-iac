@@ -1,26 +1,34 @@
 import * as aws from "@pulumi/aws";
-import { vpc } from "./vpc";
-import * as pulumi from "@pulumi/pulumi";
-import { subnets } from "./subnets";
+import type { Output } from "@pulumi/pulumi";
 
-export const gateway = new aws.ec2.InternetGateway("gateway", {
-  vpcId: vpc.id,
-});
+export const createRouting = ({
+  vpcId,
+  subnetIds,
+}: {
+  vpcId: Output<string>;
+  subnetIds: Output<string>[];
+}) => {
+  const gateway = new aws.ec2.InternetGateway("gateway", {
+    vpcId,
+  });
 
-const routeTable = new aws.ec2.RouteTable("routeTable", {
-  vpcId: vpc.id,
-  routes: [
-    {
-      cidrBlock: "0.0.0.0/0",
-      gatewayId: gateway.id,
-    },
-  ],
-});
+  const routeTable = new aws.ec2.RouteTable("routeTable", {
+    vpcId,
+    routes: [
+      {
+        cidrBlock: "0.0.0.0/0",
+        gatewayId: gateway.id,
+      },
+    ],
+  });
 
-export const routeTableAssociations = subnets.map(
-  (subnet, i) =>
-    new aws.ec2.RouteTableAssociation(`routeTableAssociation-${i}`, {
-      subnetId: subnet.id,
-      routeTableId: routeTable.id,
-    })
-);
+  const routeTableAssociations = subnetIds.map(
+    (subnetId, i) =>
+      new aws.ec2.RouteTableAssociation(`routeTableAssociation-${i}`, {
+        subnetId,
+        routeTableId: routeTable.id,
+      })
+  );
+
+  return gateway;
+};

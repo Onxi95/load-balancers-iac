@@ -1,25 +1,28 @@
 import * as aws from "@pulumi/aws";
-import { vpc } from "./vpc";
+import type { Output } from "@pulumi/pulumi";
 
-const subnetsData = [
-  {
-    name: "a",
-    cidrBlock: "10.0.1.0/24",
-    availabilityZone: "us-east-1a",
-  },
-  {
-    name: "b",
-    cidrBlock: "10.0.2.0/24",
-    availabilityZone: "us-east-1b",
-  },
-];
+type SubnetConfig = {
+  name: string;
+  cidrBlock: string;
+  availabilityZone: `us-east-1${"a" | "b"}`;
+};
 
-export const subnets = subnetsData.map(
-  (subnet) =>
-    new aws.ec2.Subnet(subnet.name, {
-      vpcId: vpc.id,
-      cidrBlock: subnet.cidrBlock,
-      mapPublicIpOnLaunch: true,
-      availabilityZone: subnet.availabilityZone,
-    })
-);
+export const createSubnets = ({
+  vpcId,
+  subnetConfig,
+}: {
+  vpcId: Output<string>;
+  subnetConfig: SubnetConfig[];
+}) => {
+  const subnets = subnetConfig.map(
+    (subnet) =>
+      new aws.ec2.Subnet(subnet.name, {
+        vpcId,
+        cidrBlock: subnet.cidrBlock,
+        mapPublicIpOnLaunch: true,
+        availabilityZone: subnet.availabilityZone,
+      })
+  );
+
+  return subnets;
+};
