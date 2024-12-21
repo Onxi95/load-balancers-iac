@@ -22,7 +22,6 @@ resource "aws_instance" "servers" {
 
   user_data = <<-EOF
               #!/bin/bash
-              sudo su
               yum install -y httpd
               systemctl start httpd
               systemctl enable httpd
