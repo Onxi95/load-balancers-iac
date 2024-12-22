@@ -1,4 +1,7 @@
-locals {
+module "subnet_module" {
+  source = "./subnet_module"
+
+  vpc_id = aws_vpc.custom_vpc.id
   subnets = {
     a = {
       cidr_block        = "10.0.1.0/24"
@@ -9,12 +12,4 @@ locals {
       availability_zone = "us-east-1b"
     }
   }
-}
-
-resource "aws_subnet" "public" {
-  for_each = local.subnets
-
-  vpc_id            = aws_vpc.custom_vpc.id
-  cidr_block        = each.value.cidr_block
-  availability_zone = each.value.availability_zone
 }

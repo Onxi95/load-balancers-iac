@@ -16,7 +16,7 @@ resource "aws_instance" "servers" {
 
   ami                         = "ami-0453ec754f44f9a4a"
   instance_type               = "t2.micro"
-  subnet_id                   = aws_subnet.public[each.value.subnet_key].id
+  subnet_id                   = module.subnet_module.subnet_ids[each.value.subnet_key]
   vpc_security_group_ids      = [aws_security_group.security_group.id]
   associate_public_ip_address = true
 

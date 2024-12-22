@@ -3,7 +3,7 @@ resource "aws_lb" "load_balancer" {
   internal           = false
   load_balancer_type = "application"
   security_groups    = [aws_security_group.security_group.id]
-  subnets            = [aws_subnet.public["a"].id, aws_subnet.public["b"].id]
+  subnets            = values(module.subnet_module.subnet_ids)
 }
 
 resource "aws_lb_listener" "lb_listener" {

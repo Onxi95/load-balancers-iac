@@ -1,5 +1,4 @@
-Terraform used the selected providers to generate the
-following execution plan. Resource actions are
+Terraform used the selected providers to generate the following execution plan. Resource actions are
 indicated with the following symbols:
   + create
 
@@ -46,7 +45,7 @@ Terraform will perform the following actions:
       + subnet_id                            = (known after apply)
       + tags_all                             = (known after apply)
       + tenancy                              = (known after apply)
-      + user_data                            = "b482be8766e2907d91e1a8f46a2cdede189da449"
+      + user_data                            = "a8a3a191045636fbcc8ccec8e007dcd7d450fef2"
       + user_data_base64                     = (known after apply)
       + user_data_replace_on_change          = false
       + vpc_security_group_ids               = (known after apply)
@@ -115,7 +114,7 @@ Terraform will perform the following actions:
       + subnet_id                            = (known after apply)
       + tags_all                             = (known after apply)
       + tenancy                              = (known after apply)
-      + user_data                            = "10b7e7d7caf76f03c1ac17d19d757f8c405e2969"
+      + user_data                            = "ccc9f4d57aa5853e18495aff1e163d8055cc5ac3"
       + user_data_base64                     = (known after apply)
       + user_data_replace_on_change          = false
       + vpc_security_group_ids               = (known after apply)
@@ -340,46 +339,6 @@ Terraform will perform the following actions:
       + vpc_id                 = (known after apply)
     }
 
-  # aws_subnet.public["a"] will be created
-  + resource "aws_subnet" "public" {
-      + arn                                            = (known after apply)
-      + assign_ipv6_address_on_creation                = false
-      + availability_zone                              = "us-east-1a"
-      + availability_zone_id                           = (known after apply)
-      + cidr_block                                     = "10.0.1.0/24"
-      + enable_dns64                                   = false
-      + enable_resource_name_dns_a_record_on_launch    = false
-      + enable_resource_name_dns_aaaa_record_on_launch = false
-      + id                                             = (known after apply)
-      + ipv6_cidr_block_association_id                 = (known after apply)
-      + ipv6_native                                    = false
-      + map_public_ip_on_launch                        = false
-      + owner_id                                       = (known after apply)
-      + private_dns_hostname_type_on_launch            = (known after apply)
-      + tags_all                                       = (known after apply)
-      + vpc_id                                         = (known after apply)
-    }
-
-  # aws_subnet.public["b"] will be created
-  + resource "aws_subnet" "public" {
-      + arn                                            = (known after apply)
-      + assign_ipv6_address_on_creation                = false
-      + availability_zone                              = "us-east-1b"
-      + availability_zone_id                           = (known after apply)
-      + cidr_block                                     = "10.0.2.0/24"
-      + enable_dns64                                   = false
-      + enable_resource_name_dns_a_record_on_launch    = false
-      + enable_resource_name_dns_aaaa_record_on_launch = false
-      + id                                             = (known after apply)
-      + ipv6_cidr_block_association_id                 = (known after apply)
-      + ipv6_native                                    = false
-      + map_public_ip_on_launch                        = false
-      + owner_id                                       = (known after apply)
-      + private_dns_hostname_type_on_launch            = (known after apply)
-      + tags_all                                       = (known after apply)
-      + vpc_id                                         = (known after apply)
-    }
-
   # aws_vpc.custom_vpc will be created
   + resource "aws_vpc" "custom_vpc" {
       + arn                                  = (known after apply)
@@ -399,4 +358,44 @@ Terraform will perform the following actions:
       + main_route_table_id                  = (known after apply)
       + owner_id                             = (known after apply)
       + tags_all                             = (known after apply)
+    }
+
+  # module.subnet_module.aws_subnet.public["a"] will be created
+  + resource "aws_subnet" "public" {
+      + arn                                            = (known after apply)
+      + assign_ipv6_address_on_creation                = false
+      + availability_zone                              = "us-east-1a"
+      + availability_zone_id                           = (known after apply)
+      + cidr_block                                     = "10.0.1.0/24"
+      + enable_dns64                                   = false
+      + enable_resource_name_dns_a_record_on_launch    = false
+      + enable_resource_name_dns_aaaa_record_on_launch = false
+      + id                                             = (known after apply)
+      + ipv6_cidr_block_association_id                 = (known after apply)
+      + ipv6_native                                    = false
+      + map_public_ip_on_launch                        = false
+      + owner_id                                       = (known after apply)
+      + private_dns_hostname_type_on_launch            = (known after apply)
+      + tags_all                                       = (known after apply)
+      + vpc_id                                         = (known after apply)
+    }
+
+  # module.subnet_module.aws_subnet.public["b"] will be created
+  + resource "aws_subnet" "public" {
+      + arn                                            = (known after apply)
+      + assign_ipv6_address_on_creation                = false
+      + availability_zone                              = "us-east-1b"
+      + availability_zone_id                           = (known after apply)
+      + cidr_block                                     = "10.0.2.0/24"
+      + enable_dns64                                   = false
+      + enable_resource_name_dns_a_record_on_launch    = false
+      + enable_resource_name_dns_aaaa_record_on_launch = false
+      + id                                             = (known after apply)
+      + ipv6_cidr_block_association_id                 = (known after apply)
+      + ipv6_native                                    = false
+      + map_public_ip_on_launch                        = false
+      + owner_id                                       = (known after apply)
+      + private_dns_hostname_type_on_launch            = (known after apply)
+      + tags_all                                       = (known after apply)
+      + vpc_id                                         = (known after apply)
     }
